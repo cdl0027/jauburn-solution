@@ -18,6 +18,11 @@ JbIfNode >> condition: anObject [
 	condition := anObject
 ]
 
+{ #category : #api }
+JbIfNode >> executeIn: anEnvironment [
+	"test condition -> loop and execute trueStatements"
+]
+
 { #category : #accessing }
 JbIfNode >> trueStatements [
 	^ trueStatements

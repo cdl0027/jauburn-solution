@@ -229,8 +229,7 @@ JbParser >> assignmentStatement [
 
 { #category : #expressions }
 JbParser >> booleanExpression [
-
-	^'true' asParser / 'false' asParser ==> [ :str | JbConstantExpressionNode new value: str = 'true'; yourself ]
+	^ 'true' asParser / 'false' asParser ==> [ :str | JbConstantExpressionNode new value: str = 'true'; yourself ]
 ]
 
 { #category : #expressions }

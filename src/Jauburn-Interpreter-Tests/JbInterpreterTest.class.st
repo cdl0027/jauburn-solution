@@ -3,7 +3,9 @@ Class {
 	#superclass : #TestCase,
 	#instVars : [
 		'interpreter',
-		'parser'
+		'parser',
+		'inner',
+		'outer'
 	],
 	#category : #'Jauburn-Interpreter-Tests'
 }
@@ -19,7 +21,11 @@ JbInterpreterTest >> interpret: aString [
 
 { #category : #running }
 JbInterpreterTest >> setUp [ 
-
+	"Added environment [inner, outer]"
+	outer := JbEnvironment new.
+	inner := JbEnvironment new.
+	inner outerEnvironment: outer.
+	
 	parser := JbParser new.
 	interpreter := JbInterpreter new
 ]
@@ -39,4 +45,11 @@ JbInterpreterTest >> testDeclarationCreatesVariable [
 
 	self interpret: 'var x = 99;'.
 	self assert: (interpreter environment includesKey: 'x')
+]
+
+{ #category : #tests }
+JbInterpreterTest >> testFunctionDefinition [
+	
+	self interpret: 'var x = function(a, b, c) {};'.
+	self assert: ((interpreter environment at: 'x') isKindOf: JbFunction).
 ]

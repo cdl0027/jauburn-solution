@@ -13,5 +13,19 @@ JbArity2OperatorNode >> evaluateIn: environment [
 	self operator = $-
 		ifTrue: [ ^lhsValue - rhsValue ].
 	self operator = $/
-		ifTrue: [ ^lhsValue / rhsValue ]
+		ifTrue: [ ^lhsValue / rhsValue ].
+	self operator = '=='
+		ifTrue: [ ^lhsValue = rhsValue ].
+	self operator = '<'
+		ifTrue: [ ^lhsValue < rhsValue ].
+	self operator = '<='
+		ifTrue: [ ^lhsValue <= rhsValue ].
+	self operator = '>'
+		ifTrue: [ ^lhsValue > rhsValue ].
+	self operator = '>='
+		ifTrue: [ ^lhsValue >= rhsValue ].
+	self operator = '!='
+		ifTrue: [ ^lhsValue ~= rhsValue ]
+		
+	
 ]

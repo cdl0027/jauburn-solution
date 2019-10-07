@@ -49,6 +49,24 @@ JbInterpreterTest >> testArity2Operator [
 	self assert: (interpreter environment at: 'x') equals: 6.
 	self interpret: 'var x = 6 / 2;'.
 	self assert: (interpreter environment at: 'x') equals: 3.
+	
+	"boolean operators"
+	self interpret: 'var x = 3 == 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 1 < 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 1 <= 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 3 <= 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 5 > 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 3 >= 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 5 >= 3;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'var x = 5 != 3'.
+	self assert: (interpreter environment at: 'x') equals: true.
 ]
 
 { #category : #running }

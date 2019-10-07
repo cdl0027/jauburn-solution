@@ -8,7 +8,8 @@ Class {
 	#name : #JbInterpreter,
 	#superclass : #Object,
 	#instVars : [
-		'environment'
+		'environment',
+		'primitives'
 	],
 	#category : #'Jauburn-Interpreter-Core'
 }
@@ -23,7 +24,19 @@ JbInterpreter >> environment [
 JbInterpreter >> initialize [ 
 
 	super initialize.
-	environment := JbEnvironment new
+	environment := JbEnvironment new.
+	primitives := Set new.
+	self initializeEnvBindings.
+]
+
+{ #category : #initialize }
+JbInterpreter >> initializeEnvBindings [
+	(self class selectors select: [ :each | each endsWith: 'Binding' ])
+		do: [ :s |
+			| binding |
+			binding := self perform: s.
+			primitives add: binding key.
+			environment at: binding key put: (JbPrimitive new block: binding value) ].
 ]
 
 { #category : #api }

@@ -32,6 +32,11 @@ JbInterpreter >> interpret: ast [
 	^ast executeIn: environment 
 ]
 
+{ #category : #primitives }
+JbInterpreter >> printBinding [
+	^#print -> [ :value | Transcript show: value printString; cr. ]
+]
+
 { #category : #api }
 JbInterpreter >> run: programString [
 

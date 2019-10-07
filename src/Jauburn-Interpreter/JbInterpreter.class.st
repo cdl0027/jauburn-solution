@@ -9,7 +9,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'environment',
-		'primitives'
+		'primitives',
+		'transcript'
 	],
 	#category : #'Jauburn-Interpreter-Core'
 }
@@ -17,6 +18,11 @@ Class {
 { #category : #primitives }
 JbInterpreter >> absBinding [
 	^#abs -> [ :value | value abs ]
+]
+
+{ #category : #primitives }
+JbInterpreter >> concatBinding [
+	^#concat -> [ :e :l | e, l ]
 ]
 
 { #category : #accessing }
@@ -44,10 +50,25 @@ JbInterpreter >> initializeEnvBindings [
 			environment at: binding key put: (JbPrimitive new block: binding value) ].
 ]
 
+{ #category : #primitives }
+JbInterpreter >> inputBinding [
+	^ #input -> [ :s | UIManager default request: s ]
+]
+
 { #category : #api }
 JbInterpreter >> interpret: ast [
 
 	^ast executeIn: environment 
+]
+
+{ #category : #primitives }
+JbInterpreter >> lengthBinding [
+	^#length -> [ :s | s size ]
+]
+
+{ #category : #primitives }
+JbInterpreter >> modBinding [
+	^#mod -> [ :a :b | a \\ b ]
 ]
 
 { #category : #primitives }
@@ -66,4 +87,14 @@ JbInterpreter >> run: programString [
 	| parser |
 	parser := JbParser new.
 	self interpret: (parser parse: programString)
+]
+
+{ #category : #accessing }
+JbInterpreter >> transcript [
+	^ transcript ifNil: [ Transcript ]
+]
+
+{ #category : #accessing }
+JbInterpreter >> transcript: aTranscript [
+	transcript := aTranscript
 ]

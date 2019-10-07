@@ -91,6 +91,13 @@ JbInterpreterTest >> testAssignmentStatementCall [
 	self assert: (interpreter environment at: 'x') equals: false.
 ]
 
+{ #category : #tests }
+JbInterpreterTest >> testConcatBinding [
+
+	self interpret: 'var x = concat("a","b");'.
+	self assert: (interpreter environment at: 'x') equals: 'ab'.	
+]
+
 { #category : #running }
 JbInterpreterTest >> testDeclarationBindsVariableToExpressionValue [
 
@@ -158,10 +165,36 @@ JbInterpreterTest >> testIfStatementCall [
 ]
 
 { #category : #tests }
+JbInterpreterTest >> testLengthBinding [
+
+	self interpret: 'var x = length("hello");'.
+	self assert: (interpreter environment at: 'x') equals: 5.
+	
+	self interpret: 'var x = length("a");'.
+	self assert: (interpreter environment at: 'x') equals: 1.
+]
+
+{ #category : #tests }
+JbInterpreterTest >> testModBinding [
+
+	self interpret: 'var x = mod(4, 2);'.
+	self assert: (interpreter environment at: 'x') equals: 0.
+]
+
+{ #category : #tests }
 JbInterpreterTest >> testNotBinding [
 
 	self interpret: 'var x = not(false);'.
 	self assert: (interpreter environment at: 'x') equals: true.
+]
+
+{ #category : #tests }
+JbInterpreterTest >> testPrint [
+	| mt |
+	mt := MockTranscript new.
+	self transcript: mt.
+	"ph parseAndEval: '(print 42)'."
+	self assert: mt contents equals: '42'.
 ]
 
 { #category : #tests }

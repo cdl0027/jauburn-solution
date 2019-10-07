@@ -20,11 +20,16 @@ JbFunctionNode >> body: anObject [
 ]
 
 { #category : #api }
-JbFunctionNode >> evaluateIn: anEnvironment [
+JbFunctionNode >> evaluateIn: environment [
+	Transcript show: '-------- JbFunctionNode>>evaluateIn: --------'; cr.
+	Transcript show: environment printString; cr.
+	Transcript show: self name printString; cr.
+	Transcript show: self parameters printString; cr.
+	Transcript show: self body printString; cr.
 	^JbFunction new
 		parameters: self parameters;
 		body: self body;
-		environment: anEnvironment;
+		environment: environment;
 		yourself.
 ]
 

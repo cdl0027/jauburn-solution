@@ -19,22 +19,19 @@ JbFunctionCallNode >> arguments: anObject [
 ]
 
 { #category : #api }
-JbFunctionCallNode >> evaluateIn: anEnvironment [
+JbFunctionCallNode >> evaluateIn: environment [
 	| eval_args |
 	"arguments begin as JbConstantExpressionNode"
-	Transcript
-		show: self arguments printString;
-		cr.
-	eval_args := arguments collect: [ :e | e evaluateIn: anEnvironment ].
-	Transcript
-		show: eval_args printString;
-		cr.
+	Transcript show: '-------- JbFunctionCallNode>>evaluateIn: --------'; cr.
+	Transcript show: environment printString; cr.
+	Transcript show: self identifier printString; cr.
+	Transcript show: self arguments printString; cr.
+	
+	eval_args := arguments collect: [ :e | e evaluateIn: environment ].
+	Transcript show: eval_args printString; cr.
 
 	"determine type -> return JbFunction"
-	Transcript
-		show: self identifier printString;
-		cr.
-	^ (anEnvironment at: identifier) call: eval_args in: anEnvironment
+	^ (environment at: identifier) call: eval_args in: environment
 ]
 
 { #category : #accessing }

@@ -69,6 +69,16 @@ JbInterpreterTest >> testArity2Operator [
 	self assert: (interpreter environment at: 'x') equals: true.
 ]
 
+{ #category : #tests }
+JbInterpreterTest >> testAssignmentStatementCall [
+	self interpret: 'x = 33;'.
+	self assert: (interpreter environment at: 'x') equals: 33.
+	self interpret: 'x = true;'.
+	self assert: (interpreter environment at: 'x') equals: true.
+	self interpret: 'x = false;'.
+	self assert: (interpreter environment at: 'x') equals: false.
+]
+
 { #category : #running }
 JbInterpreterTest >> testDeclarationBindsVariableToExpressionValue [
 
@@ -110,11 +120,19 @@ JbInterpreterTest >> testFunctionDefinition [
 { #category : #tests }
 JbInterpreterTest >> testIfElseStatementCall [
 
+<<<<<<< HEAD
 	self interpret: 'var x = 1; if (x == 1) { var r = 10; return r; };'.
 	self assert: (interpreter environment at: 'r') equals: 10.
 	
 	self interpret: 'var x = 2; var y = false; if (x == 1) { var y = true; return y; };'.
 	self assert: (interpreter environment at: 'y') equals: false.
+=======
+	self interpret: 'var x = 1; if (x == 1) { var r = 10; return r; } else { var r = 20; return r; };'.
+	self assert: (interpreter environment at: 'r') equals: 10.
+	
+	self interpret: 'var x = 2; if (x == 1) { var r = 10; return r; } else { var r = 20; return r; };'.
+	self assert: (interpreter environment at: 'r') equals: 20.
+>>>>>>> pharo_failure
 ]
 
 { #category : #tests }

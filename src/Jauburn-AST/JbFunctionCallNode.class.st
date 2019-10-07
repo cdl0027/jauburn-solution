@@ -24,6 +24,7 @@ JbFunctionCallNode >> evaluateIn: environment [
 	"arguments begin as JbConstantExpressionNode"
 	Transcript show: '-------- JbFunctionCallNode>>evaluateIn: --------'; cr.
 	Transcript show: environment printString; cr.
+	Transcript show: self identifier printString; cr.
 	Transcript show: self arguments printString; cr.
 	
 	eval_args := arguments collect: [ :e | e evaluateIn: environment ].

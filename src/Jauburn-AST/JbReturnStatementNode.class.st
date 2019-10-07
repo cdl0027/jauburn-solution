@@ -8,10 +8,11 @@ Class {
 }
 
 { #category : #api }
-JbReturnStatementNode >> evaluateIn: anEnvironment [
-	Transcript show: ((anEnvironment at: 'x') parameters first) identifier printString; cr.
-	
-	^self expression
+JbReturnStatementNode >> executeIn: environment [
+	Transcript show: '-------- JbReturnStatementNode --------'; cr.
+	Transcript show: environment printString; cr.
+	Transcript show: (self expression evaluateIn: environment) printString; cr.
+	^self expression evaluateIn: environment.
 ]
 
 { #category : #accessing }

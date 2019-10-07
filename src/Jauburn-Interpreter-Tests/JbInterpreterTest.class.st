@@ -99,14 +99,17 @@ JbInterpreterTest >> testDeclarationCreatesVariable [
 { #category : #tests }
 JbInterpreterTest >> testFunctionCall [
 	
-	self interpret: 'var x = function(a, b, c) { return a + b + c; }; var y = x(1, 2, 3);'.
-	self assert: (interpreter environment at: 'y') equals: 6.
+	self interpret: 'var x = function(a, b) { return a + b; }; var y = x(1, 2);'.
+	self assert: (interpreter environment at: 'y') equals: 3.
+	
+	
 ]
 
 { #category : #tests }
 JbInterpreterTest >> testFunctionDefinition [
 	
 	self interpret: 'var x = function(a, b, c) {};'.
+	self assert: ((interpreter environment at: 'x') isKindOf: JbFunction).
 	self assert: (interpreter environment at: 'x') parameters size equals: 3.
 	self assert: (interpreter environment at: 'x') body size equals: 0.
 	self assert: (interpreter environment at: 'x') environment equals: interpreter environment.

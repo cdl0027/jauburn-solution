@@ -28,9 +28,7 @@ JbFunctionCallNode >> evaluateIn: environment [
 	Transcript show: self arguments printString; cr.
 	
 	eval_args := arguments collect: [ :e | e evaluateIn: environment ].
-	Transcript show: eval_args printString; cr.
-
-	"determine type -> return JbFunction"
+	Transcript show: ((environment at: identifier) call: eval_args in: environment) printString; cr.
 	^ (environment at: identifier) call: eval_args in: environment
 ]
 

@@ -24,7 +24,7 @@ JbFunctionNode >> evaluateIn: anEnvironment [
 	^JbFunction new
 		parameters: self parameters;
 		body: self body;
-		environment: anEnvironment
+		environment: anEnvironment;
 		yourself.
 ]
 

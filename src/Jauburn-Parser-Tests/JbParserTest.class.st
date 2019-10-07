@@ -49,7 +49,7 @@ JbParserTest >> testArithmeticExpression [
 	self assert: expression rhs value equals: 13.
 	self assert: expression operator equals: $*.
 	expression := self parse: 'falafel' rule: #arithmeticExpression.
-	self assert: expression identifier equals: 'falafel'
+	self assert: expression identifier equals: 'falafel'.
 
 ]
 

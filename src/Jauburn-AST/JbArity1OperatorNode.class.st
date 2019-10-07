@@ -8,6 +8,14 @@ Class {
 	#category : #'Jauburn-AST-Core'
 }
 
+{ #category : #api }
+JbArity1OperatorNode >> evaluateIn: environment [
+	| val |
+	val := self operand evaluateIn: environment.
+	self operator = $-
+		ifTrue: [ ^0 - val ]
+]
+
 { #category : #accessing }
 JbArity1OperatorNode >> operand [
 	^ operand

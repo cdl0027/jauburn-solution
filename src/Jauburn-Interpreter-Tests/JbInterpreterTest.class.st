@@ -31,6 +31,18 @@ JbInterpreterTest >> setUp [
 ]
 
 { #category : #tests }
+JbInterpreterTest >> testAbsBinding [
+
+	self interpret: 'var x = abs(-100);'.
+	self assert: (interpreter environment at: 'x') equals: 100.
+	self interpret: 'var x = abs(0);'.
+	self assert: (interpreter environment at: 'x') equals: 0.
+	self interpret: 'var x = abs(200);'.
+	self assert: (interpreter environment at: 'x') equals: 200.
+	
+]
+
+{ #category : #tests }
 JbInterpreterTest >> testArity1Operator [
 	
 	self interpret: 'var x = -3;'.
@@ -102,6 +114,9 @@ JbInterpreterTest >> testFunctionCall [
 	self interpret: 'var x = function(a, b) { return a + b; }; var y = x(1, 2);'.
 	self assert: (interpreter environment at: 'y') equals: 3.
 	
+	self interpret: 'var x = function(a, b, c) { return a + b + c; }; var y = x(1, 2, 3);'.
+	self assert: (interpreter environment at: 'y') equals: 6.
+	
 	
 ]
 
@@ -143,8 +158,15 @@ JbInterpreterTest >> testIfStatementCall [
 ]
 
 { #category : #tests }
+JbInterpreterTest >> testNotBinding [
+
+	self interpret: 'var x = not(false);'.
+	self assert: (interpreter environment at: 'x') equals: true.
+]
+
+{ #category : #tests }
 JbInterpreterTest >> testPrintBinding [
 
-	self interpret: 'var x = print(#v);'.
+	self interpret: 'var x = print("hello");'.
 	self assert: (interpreter environment at: 'x') equals: #v.
 ]

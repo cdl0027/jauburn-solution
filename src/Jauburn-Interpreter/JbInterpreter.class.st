@@ -14,6 +14,11 @@ Class {
 	#category : #'Jauburn-Interpreter-Core'
 }
 
+{ #category : #primitives }
+JbInterpreter >> absBinding [
+	^#abs -> [ :value | value abs ]
+]
+
 { #category : #accessing }
 JbInterpreter >> environment [ 
 
@@ -43,6 +48,11 @@ JbInterpreter >> initializeEnvBindings [
 JbInterpreter >> interpret: ast [
 
 	^ast executeIn: environment 
+]
+
+{ #category : #primitives }
+JbInterpreter >> notBinding [
+	^#not -> [ :value | value not ]
 ]
 
 { #category : #primitives }

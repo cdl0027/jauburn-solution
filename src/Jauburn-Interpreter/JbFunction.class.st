@@ -30,18 +30,14 @@ JbFunction >> body: anObject [
 JbFunction >> call: arguments in: callEnvironment [
 	"You need to implement this method!  arguments will contain the arguments to pass to this function and callEnvironment will contain the environment in place when this function was called."
 
-	| app_env result pm |
+	| app_env result |
 	Transcript show: '-------- JbFunction>>call:in: --------'; cr.
 	Transcript show: environment; cr.
 	Transcript show: callEnvironment; cr.
 	Transcript show: arguments printString; cr.
 	Transcript show: parameters printString; cr.
 	
-	pm := parameters collect: [ :s | s identifier ].
-
-	Transcript show: pm printString; cr.
-
-	app_env := JbEnvironment newFromKeys: pm andValues: arguments.
+	app_env := JbEnvironment newFromKeys: (parameters collect: [ :s | s identifier ]) andValues: arguments.
 	result := body collect: [ :e | e executeIn: app_env ].
 	result := result last.
 	

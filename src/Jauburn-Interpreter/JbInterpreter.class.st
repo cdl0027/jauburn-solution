@@ -83,7 +83,7 @@ JbInterpreter >> printBinding [
 
 { #category : #primitives }
 JbInterpreter >> printlnBinding [
-	^#print -> [ :value | Transcript show: value printString; cr. ]
+	^#println -> [ :value | Transcript show: value printString; cr. ]
 ]
 
 { #category : #api }

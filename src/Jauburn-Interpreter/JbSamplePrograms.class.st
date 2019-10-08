@@ -9,14 +9,16 @@ Class {
 
 { #category : #'sample programs' }
 JbSamplePrograms class >> noFunctions [
-	"self run: #noFunctions"
-
+	"self run: #noFunctions."
+	
 	^'var x = 1;
-var y = 10 * x - 1;
-if (y == 9) { 
-   x = 16;
-}
-'
+		var y = 10 * x - 1;
+		if (y == 9) { 
+   			x = 16;
+			return x;
+		};'
+
+
 ]
 
 { #category : #utilities }

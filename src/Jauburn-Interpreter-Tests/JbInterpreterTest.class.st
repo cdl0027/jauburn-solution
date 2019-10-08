@@ -203,3 +203,11 @@ JbInterpreterTest >> testPrintBinding [
 	self interpret: 'var x = print("hello");'.
 	self assert: (interpreter environment at: 'x') equals: #v.
 ]
+
+{ #category : #tests }
+JbInterpreterTest >> testWhileLoopStatementCall [
+
+	self interpret: 'var x = 1; var y = 0; while (x <= 10) { y = y + x; x = x + 1; }'.
+	self assert: (interpreter environment at: 'y') equals: 55.
+	
+]

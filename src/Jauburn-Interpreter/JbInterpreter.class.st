@@ -78,6 +78,11 @@ JbInterpreter >> notBinding [
 
 { #category : #primitives }
 JbInterpreter >> printBinding [
+	^#print -> [ :value | Transcript show: value printString. ]
+]
+
+{ #category : #primitives }
+JbInterpreter >> printlnBinding [
 	^#print -> [ :value | Transcript show: value printString; cr. ]
 ]
 

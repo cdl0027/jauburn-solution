@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'contents'
 	],
-	#category : #'Jauburn-Interpreter'
+	#category : #'Jauburn-Interpreter-Core'
 }
 
 { #category : #accessing }

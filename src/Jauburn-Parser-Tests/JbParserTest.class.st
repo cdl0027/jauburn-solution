@@ -281,6 +281,7 @@ JbParserTest >> testWhileStatement [
 
 	| stmt |
 	stmt := self parse: 'while (x <= 10) { x = x + 1; }' rule: #whileStatement.
+	self assert: (stmt isKindOf: JbWhileLoopNode).
 	self assert: stmt condition operator equals: '<='.
 	self assert: stmt whileStatements size equals: 1.
 ]

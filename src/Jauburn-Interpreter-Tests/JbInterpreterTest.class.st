@@ -124,6 +124,9 @@ JbInterpreterTest >> testFunctionCall [
 	self interpret: 'var x = function(a, b, c) { return a + b + c; }; var y = x(1, 2, 3);'.
 	self assert: (interpreter environment at: 'y') equals: 6.
 	
+	self interpret: 'var x = function(a,b) { return mod(a,b); }; var y = x(4,2);'.
+	self assert: (interpreter environment at: 'y') equals: 0.
+	
 	
 ]
 

@@ -6,3 +6,13 @@ Class {
 	],
 	#category : #'Jauburn-Interpreter-Core'
 }
+
+{ #category : #accessing }
+MockUIManager >> contents [
+	^ contents
+]
+
+{ #category : #accessing }
+MockUIManager >> request: aString [
+	contents := aString
+]

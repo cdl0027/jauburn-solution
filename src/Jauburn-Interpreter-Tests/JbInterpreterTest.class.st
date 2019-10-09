@@ -165,6 +165,15 @@ JbInterpreterTest >> testIfStatementCall [
 ]
 
 { #category : #tests }
+JbInterpreterTest >> testInputBinding [
+	| mu |
+	mu := MockUIManager new.
+	interpreter uimanager: mu.
+	self interpret: 'var p = input("95");'.
+	self assert: mu contents equals: '95'.
+]
+
+{ #category : #tests }
 JbInterpreterTest >> testLengthBinding [
 
 	self interpret: 'var x = length("hello");'.

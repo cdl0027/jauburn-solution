@@ -10,7 +10,8 @@ Class {
 	#instVars : [
 		'environment',
 		'primitives',
-		'transcript'
+		'transcript',
+		'uimanager'
 	],
 	#category : #'Jauburn-Interpreter-Core'
 }
@@ -52,7 +53,7 @@ JbInterpreter >> initializeEnvBindings [
 
 { #category : #primitives }
 JbInterpreter >> inputBinding [
-	^ #input -> [ :s | UIManager default request: s ]
+	^ #input -> [ :s | self uimanager request: s ]
 ]
 
 { #category : #api }
@@ -102,4 +103,14 @@ JbInterpreter >> transcript [
 { #category : #accessing }
 JbInterpreter >> transcript: aTranscript [
 	transcript := aTranscript
+]
+
+{ #category : #accessing }
+JbInterpreter >> uimanager [
+	^ uimanager ifNil: [ UIManager default ]
+]
+
+{ #category : #accessing }
+JbInterpreter >> uimanager: aUIManager [
+	uimanager := aUIManager
 ]

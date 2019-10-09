@@ -10,10 +10,10 @@ Class {
 
 { #category : #api }
 JbAssignmentStatementNode >> executeIn: environment [
-	Transcript show: '-------- JbAssignmentStatementNode>>executeIn: --------'; cr.
+"	Transcript show: '-------- JbAssignmentStatementNode>>executeIn: --------'; cr.
 	Transcript show: environment printString; cr.	
 	Transcript show: identifier printString; cr.
-	Transcript show: expression printString; cr.
+	Transcript show: expression printString; cr."
 
 	environment
 		at: self identifier

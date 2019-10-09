@@ -11,10 +11,10 @@ Class {
 { #category : #api }
 JbArity1OperatorNode >> evaluateIn: environment [
 	| val |
-	Transcript show: '-------- JbArity1OperatorNode>>evaluateIn: --------'; cr.
+"	Transcript show: '-------- JbArity1OperatorNode>>evaluateIn: --------'; cr.
 	Transcript show: environment printString; cr.	
 	Transcript show: operand printString; cr.
-	Transcript show: operator printString; cr.
+	Transcript show: operator printString; cr."
 	
 	val := self operand evaluateIn: environment.
 	self operator = $-

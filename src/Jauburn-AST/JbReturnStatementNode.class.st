@@ -9,9 +9,9 @@ Class {
 
 { #category : #api }
 JbReturnStatementNode >> executeIn: environment [
-	Transcript show: '-------- JbReturnStatementNode --------'; cr.
+"	Transcript show: '-------- JbReturnStatementNode --------'; cr.
 	Transcript show: environment printString; cr.
-	Transcript show: (self expression evaluateIn: environment) printString; cr.
+	Transcript show: (self expression evaluateIn: environment) printString; cr."
 	^self expression evaluateIn: environment.
 ]
 

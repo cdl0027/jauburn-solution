@@ -22,10 +22,10 @@ JbWhileLoopNode >> condition: anObject [
 JbWhileLoopNode >> executeIn: environment [
 	"test condition -> loop and execute trueStatements"
 
-	Transcript show: '-------- JbWhileLoopNode>>executeIn: --------'; cr.
+"	Transcript show: '-------- JbWhileLoopNode>>executeIn: --------'; cr.
 	Transcript show: environment; cr.
 	Transcript show: condition; cr.
-	whileStatements do: [ :s | Transcript show: s printString; cr ].
+	whileStatements do: [ :s | Transcript show: s printString; cr ]."
 	
 	^(condition evaluateIn: environment) ifTrue: [ whileStatements do: [ :e | e executeIn: environment ]. self executeIn: environment. ].
 	

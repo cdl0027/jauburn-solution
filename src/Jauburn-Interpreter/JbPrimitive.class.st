@@ -30,7 +30,7 @@ JbPrimitive >> call: arguments in: callEnvironment [
 	Transcript show: callEnvironment; cr.
 	Transcript show: arguments printString; cr.
 	Transcript show: block printString; cr.
-	
+
 	result := (block) valueWithPossibleArgs: arguments.
 	Transcript show: result; cr.
 

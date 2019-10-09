@@ -189,19 +189,27 @@ JbInterpreterTest >> testNotBinding [
 ]
 
 { #category : #tests }
-JbInterpreterTest >> testPrint [
-	| mt |
-	mt := MockTranscript new.
-	self transcript: mt.
-	"ph parseAndEval: '(print 42)'."
-	self assert: mt contents equals: '42'.
+JbInterpreterTest >> testPrintBinding [
+	| mtTest |
+	mtTest := MockTranscript new.
+	interpreter transcript: mtTest.
+	self interpret: 'var p1 = print(5);'.
+	self assert: mtTest contents equals: '5'.
+	
+	self interpret: 'var p2 = print(6);'.
+	self assert: mtTest contents equals: '56'.
 ]
 
 { #category : #tests }
-JbInterpreterTest >> testPrintBinding [
-
-	self interpret: 'var x = print("hello");'.
-	self assert: (interpreter environment at: 'x') equals: #v.
+JbInterpreterTest >> testPrintlnBinding [
+	| mtTest |
+	mtTest := MockTranscript new.
+	interpreter transcript: mtTest.
+	self interpret: 'var p1 = println(5);'.
+	self assert: mtTest contents equals: '5', String cr.
+	
+	self interpret: 'var p2 = println(6);'.
+	self assert: mtTest contents equals: '5', String cr, '6', String cr.
 ]
 
 { #category : #tests }

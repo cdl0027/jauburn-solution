@@ -11,14 +11,26 @@ Class {
 JbSamplePrograms class >> gcdProgram [
 	^'var gcd=function(a,b) { 
 		if (b==0) {
-			var p = println("1if"); 
 			return a; 
-		} else {
-			var p1 = println("2if");
-			var m = mod(a,b);
-			return gcd(b, m); 
-		} }; 
-		var y=gcd(1071, 462);'
+		} else { 
+			gcd(b, mod(a,b));
+		} };'
+]
+
+{ #category : #'sample programs' }
+JbSamplePrograms class >> newton [
+	^'var x=input("Please enter square:");
+	  var xn=x/2;
+	  var i=1;
+	  while(i<=10) { 
+		var x2=xn*xn;
+		xn1=x2-x;
+		xn2=2*xn;
+		xn3=xn1/xn2;
+		xn=xn-xn3;
+		i=i+1;
+	  }
+	  return xn;'
 ]
 
 { #category : #'sample programs' }

@@ -13,24 +13,28 @@ JbSamplePrograms class >> gcdProgram [
 		if (b==0) {
 			return a; 
 		} else { 
-			gcd(b, mod(a,b));
-		} };'
+			return gcd(b, mod(a,b));
+		} };
+		var x=str(input("Enter first natural number: "));
+		var y=str(input("Enter second natural number: "));
+		var p = println(gcd(x,y));'
 ]
 
 { #category : #'sample programs' }
 JbSamplePrograms class >> newton [
-	^'var x=input("Please enter square:");
+	^'var x=str(input("Please enter square:"));
 	  var xn=x/2;
 	  var i=1;
-	  while(i<=10) { 
+	  while(i<=100) { 
 		var x2=xn*xn;
 		xn1=x2-x;
 		xn2=2*xn;
 		xn3=xn1/xn2;
 		xn=xn-xn3;
+		var p=println(xn);
 		i=i+1;
 	  }
-	  return xn;'
+	  var p1=println(xn);'
 ]
 
 { #category : #'sample programs' }

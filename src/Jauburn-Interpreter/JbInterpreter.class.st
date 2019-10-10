@@ -53,6 +53,7 @@ JbInterpreter >> initializeEnvBindings [
 
 { #category : #primitives }
 JbInterpreter >> inputBinding [
+	"self halt."
 	^ #input -> [ :s | self uimanager request: s ]
 ]
 
@@ -93,6 +94,12 @@ JbInterpreter >> run: programString [
 	| parser |
 	parser := JbParser new.
 	self interpret: (parser parse: programString)
+]
+
+{ #category : #primitives }
+JbInterpreter >> stringToNumberBinding [
+	"self halt."
+	^ #str -> [ :s | s asNumber ]
 ]
 
 { #category : #accessing }
